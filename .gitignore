@@ -11,6 +11,7 @@
 /[Mm]emoryCaptures/
 
 
+PackageCache/
 build/
 builds/
 bin/
