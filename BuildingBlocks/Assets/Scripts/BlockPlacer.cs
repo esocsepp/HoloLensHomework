@@ -21,7 +21,7 @@ public class BlockPlacer : MonoBehaviour
     }
     public void PlaceBlock()
     {
-        activeObject = Instantiate(prefab, new Vector3(1f,1f,0f), Quaternion.identity, spawnPoint);
+        activeObject = Instantiate(prefab, spawnPoint);
         Material m = new Material(activeColor);
         activeObject.GetComponent<Renderer>().sharedMaterial = m;
     }
