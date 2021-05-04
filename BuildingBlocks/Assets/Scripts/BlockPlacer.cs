@@ -4,9 +4,32 @@ using UnityEngine;
 
 public class BlockPlacer : MonoBehaviour
 {
-    public GameObject prefab;
+    public Transform spawnPoint;
+
+    private GameObject prefab;
+    private Material activeColor;
+    private GameObject activeObject;
+
+    public void SetActiveMaterial(Material color)
+    {
+        activeColor = color;
+    }
+
+    public void SetActiveGameObject(GameObject block)
+    {
+          prefab = block;
+    }
     public void PlaceBlock()
     {
-        Instantiate(prefab, new Vector3(1f,1f,0f), Quaternion.identity);
+        activeObject = Instantiate(prefab, new Vector3(1f,1f,0f), Quaternion.identity, spawnPoint);
+        Material m = new Material(activeColor);
+        activeObject.GetComponent<Renderer>().sharedMaterial = m;
+    }
+
+    public void SetParentToNull()
+    {
+        activeObject.GetComponent<Rigidbody>().isKinematic = false;
+        activeObject.GetComponent<Rigidbody>().useGravity = true;
+        activeObject.transform.parent = null;
     }
 }
