@@ -32,4 +32,9 @@ public class BlockPlacer : MonoBehaviour
         activeObject.GetComponent<Rigidbody>().useGravity = true;
         activeObject.transform.parent = null;
     }
+
+    public void DeleteBlock()
+    {
+        Destroy(activeObject);
+    }
 }
